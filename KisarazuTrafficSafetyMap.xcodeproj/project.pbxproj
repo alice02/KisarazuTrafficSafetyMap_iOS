@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05797A4C18913D4358A3F29F /* Pods_KisarazuTrafficSafetyMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 087CE48D89C901D3107773AD /* Pods_KisarazuTrafficSafetyMap.framework */; };
 		12D062CD1C86CD5C00B3619F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D062CC1C86CD5C00B3619F /* AppDelegate.swift */; };
 		12D062CF1C86CD5C00B3619F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D062CE1C86CD5C00B3619F /* ViewController.swift */; };
 		12D062D21C86CD5C00B3619F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D062D01C86CD5C00B3619F /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		052EF73D42803C7799EBFD79 /* Pods-KisarazuTrafficSafetyMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KisarazuTrafficSafetyMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-KisarazuTrafficSafetyMap/Pods-KisarazuTrafficSafetyMap.release.xcconfig"; sourceTree = "<group>"; };
+		087CE48D89C901D3107773AD /* Pods_KisarazuTrafficSafetyMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KisarazuTrafficSafetyMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D062C91C86CD5B00B3619F /* KisarazuTrafficSafetyMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KisarazuTrafficSafetyMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D062CC1C86CD5C00B3619F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12D062CE1C86CD5C00B3619F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		12D062D31C86CD5C00B3619F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12D062D61C86CD5C00B3619F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12D062D81C86CD5C00B3619F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAE7EFE4D7E8E56C716A1F01 /* Pods-KisarazuTrafficSafetyMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KisarazuTrafficSafetyMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KisarazuTrafficSafetyMap/Pods-KisarazuTrafficSafetyMap.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05797A4C18913D4358A3F29F /* Pods_KisarazuTrafficSafetyMap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				12D062CB1C86CD5B00B3619F /* KisarazuTrafficSafetyMap */,
 				12D062CA1C86CD5B00B3619F /* Products */,
+				B62654A7EB83DCD90F5DBA9A /* Pods */,
+				6833A7FDE6B22BD93DC336A9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = KisarazuTrafficSafetyMap;
 			sourceTree = "<group>";
 		};
+		6833A7FDE6B22BD93DC336A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				087CE48D89C901D3107773AD /* Pods_KisarazuTrafficSafetyMap.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B62654A7EB83DCD90F5DBA9A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FAE7EFE4D7E8E56C716A1F01 /* Pods-KisarazuTrafficSafetyMap.debug.xcconfig */,
+				052EF73D42803C7799EBFD79 /* Pods-KisarazuTrafficSafetyMap.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12D062DB1C86CD5C00B3619F /* Build configuration list for PBXNativeTarget "KisarazuTrafficSafetyMap" */;
 			buildPhases = (
+				0AFAA6CB2F4D7737BF1CCF81 /* Check Pods Manifest.lock */,
 				12D062C51C86CD5B00B3619F /* Sources */,
 				12D062C61C86CD5B00B3619F /* Frameworks */,
 				12D062C71C86CD5B00B3619F /* Resources */,
+				8C4AEEA59D0D7B0C284CEC31 /* Embed Pods Frameworks */,
+				797144DF252EEE152C9E35BD /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0AFAA6CB2F4D7737BF1CCF81 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		797144DF252EEE152C9E35BD /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KisarazuTrafficSafetyMap/Pods-KisarazuTrafficSafetyMap-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C4AEEA59D0D7B0C284CEC31 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KisarazuTrafficSafetyMap/Pods-KisarazuTrafficSafetyMap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		12D062C51C86CD5B00B3619F /* Sources */ = {
@@ -248,6 +323,7 @@
 		};
 		12D062DC1C86CD5C00B3619F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAE7EFE4D7E8E56C716A1F01 /* Pods-KisarazuTrafficSafetyMap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KisarazuTrafficSafetyMap/Info.plist;
@@ -260,6 +336,7 @@
 		};
 		12D062DD1C86CD5C00B3619F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 052EF73D42803C7799EBFD79 /* Pods-KisarazuTrafficSafetyMap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KisarazuTrafficSafetyMap/Info.plist;
@@ -289,6 +366,7 @@
 				12D062DD1C86CD5C00B3619F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
