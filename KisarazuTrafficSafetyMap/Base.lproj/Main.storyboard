@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -113,9 +114,23 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sg4-df-LgW">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="sg4-df-LgW" secondAttribute="trailing" constant="-20" id="0zL-id-ljt"/>
+                            <constraint firstItem="sg4-df-LgW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="3hu-yn-OaI"/>
+                            <constraint firstItem="sg4-df-LgW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="J5O-ry-BnK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sg4-df-LgW" secondAttribute="bottom" id="XFj-fR-afV"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="recents" id="cfw-Lx-mxP"/>
+                    <connections>
+                        <outlet property="mapView" destination="sg4-df-LgW" id="DKr-nz-OrP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
