@@ -102,10 +102,10 @@
             </objects>
             <point key="canvasLocation" x="-2617" y="613"/>
         </scene>
-        <!--View Controller-->
+        <!--Traffic Accident Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="KisarazuTrafficSafetyMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TrafficAccidentMapViewController" customModule="KisarazuTrafficSafetyMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>

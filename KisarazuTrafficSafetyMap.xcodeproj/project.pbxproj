@@ -13,6 +13,7 @@
 		12D062D21C86CD5C00B3619F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D062D01C86CD5C00B3619F /* Main.storyboard */; };
 		12D062D41C86CD5C00B3619F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D062D31C86CD5C00B3619F /* Assets.xcassets */; };
 		12D062D71C86CD5C00B3619F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D062D51C86CD5C00B3619F /* LaunchScreen.storyboard */; };
+		12D062DF1C86D21900B3619F /* TrafficAccidentMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D062DE1C86D21900B3619F /* TrafficAccidentMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		12D062D31C86CD5C00B3619F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12D062D61C86CD5C00B3619F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12D062D81C86CD5C00B3619F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12D062DE1C86D21900B3619F /* TrafficAccidentMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficAccidentMapViewController.swift; sourceTree = "<group>"; };
 		FAE7EFE4D7E8E56C716A1F01 /* Pods-KisarazuTrafficSafetyMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KisarazuTrafficSafetyMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KisarazuTrafficSafetyMap/Pods-KisarazuTrafficSafetyMap.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +65,7 @@
 			children = (
 				12D062CC1C86CD5C00B3619F /* AppDelegate.swift */,
 				12D062CE1C86CD5C00B3619F /* ViewController.swift */,
+				12D062DE1C86D21900B3619F /* TrafficAccidentMapViewController.swift */,
 				12D062D01C86CD5C00B3619F /* Main.storyboard */,
 				12D062D31C86CD5C00B3619F /* Assets.xcassets */,
 				12D062D51C86CD5C00B3619F /* LaunchScreen.storyboard */,
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12D062DF1C86D21900B3619F /* TrafficAccidentMapViewController.swift in Sources */,
 				12D062CF1C86CD5C00B3619F /* ViewController.swift in Sources */,
 				12D062CD1C86CD5C00B3619F /* AppDelegate.swift in Sources */,
 			);
