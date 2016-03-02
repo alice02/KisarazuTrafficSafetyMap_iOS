@@ -14,6 +14,9 @@ import SwiftyJSON
 
 class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
+    // サーバーのアドレス
+    let serverAddress = "http://localhost:3000/"
+
     // MapView
     @IBOutlet weak var mapView: MKMapView!
     
@@ -22,8 +25,10 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
     
     // 最後に位置情報を更新した場所
     var lastLocation: CLLocationCoordinate2D?
-
     
+    // 交通事故発生場所の緯度経度を格納する配列
+    var trafficAccidentPlaces: [[String: Double]] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -51,7 +56,13 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
         
         // 即位開始
         locationManager.startUpdatingLocation()
-    
+        
+        // 交通事故発生箇所をサーバーから取得
+        getTrafficAccidentPlaces({(UIBackgroundFetchResult) -> Void in
+            // ピンを立てる
+            self.setPins(self.trafficAccidentPlaces)
+        })
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,7 +104,49 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
         }
     }
 
-    
+    // サーバーから事故箇所を取得
+    func getTrafficAccidentPlaces(completionHandler: ((UIBackgroundFetchResult) -> Void)!) {
+        Alamofire.request(.GET, serverAddress + "api/v1/places.json").responseJSON { response in
+            
+            // 通信に成功
+            if response.result.isSuccess {
+                // 受信結果がnilならreturn
+                guard let object = response.result.value else {
+                    return
+                }
+                // JSONをparseする
+                let json = JSON(object)
+                json.forEach { (_, json) in
+                    let point: [String: Double] = [
+                        "latitude": json["latitude"].doubleValue,
+                        "longitude": json["longitude"].doubleValue
+                    ]
+                    // 配列に保存する
+                    self.trafficAccidentPlaces.append(point)
+                }
+                completionHandler(UIBackgroundFetchResult.NewData)
+            }
+            // 通信に失敗
+            else {
+                print(response.result.error)
+            }
+        }
+    }
+
+    // 指定した緯度経度にピンを立てる
+    func setPins(places: [[String: Double]]) {
+        for place in places {
+            // 緯度経度を抽出
+            let lat: Double = place["latitude"]!
+            let lng: Double = place["longitude"]!
+            // ピンを作る
+            let pin: MKPointAnnotation = MKPointAnnotation()
+            pin.coordinate = CLLocationCoordinate2DMake(lat, lng)
+            // ピンを追加
+            mapView.addAnnotation(pin)
+        }
+    }
+
     
 }
 
