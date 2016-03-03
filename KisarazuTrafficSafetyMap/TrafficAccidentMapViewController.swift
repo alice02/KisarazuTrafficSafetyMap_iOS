@@ -32,7 +32,10 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        
+        // ToolBarの色を変更 NavigationBarと同じ色にする
+        self.navigationController?.toolbar.barTintColor = self.navigationController?.navigationBar.barTintColor
+        
         // 現在地をマーキング
         mapView.userTrackingMode = MKUserTrackingMode.Follow
 
@@ -146,7 +149,7 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
             mapView.addAnnotation(pin)
         }
     }
-
+    
     
 }
 
