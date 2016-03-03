@@ -185,7 +185,7 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
         // 文字を表示
         centerButton.setTitle("現在地", forState: .Normal)
         centerButton.titleLabel?.font = UIFont.systemFontOfSize(12)
-        centerButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 5, 30)
+        centerButton.titleEdgeInsets = UIEdgeInsetsMake(0, -3, 5, 30)
         
         // アイコンを表示
         centerButton.setImage(targetImage, forState: .Normal)

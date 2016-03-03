@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		05797A4C18913D4358A3F29F /* Pods_KisarazuTrafficSafetyMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 087CE48D89C901D3107773AD /* Pods_KisarazuTrafficSafetyMap.framework */; };
 		12D062CD1C86CD5C00B3619F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D062CC1C86CD5C00B3619F /* AppDelegate.swift */; };
-		12D062CF1C86CD5C00B3619F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D062CE1C86CD5C00B3619F /* ViewController.swift */; };
+		12D062CF1C86CD5C00B3619F /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D062CE1C86CD5C00B3619F /* ConfigViewController.swift */; };
 		12D062D21C86CD5C00B3619F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D062D01C86CD5C00B3619F /* Main.storyboard */; };
 		12D062D41C86CD5C00B3619F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D062D31C86CD5C00B3619F /* Assets.xcassets */; };
 		12D062D71C86CD5C00B3619F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D062D51C86CD5C00B3619F /* LaunchScreen.storyboard */; };
@@ -21,7 +21,7 @@
 		087CE48D89C901D3107773AD /* Pods_KisarazuTrafficSafetyMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KisarazuTrafficSafetyMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D062C91C86CD5B00B3619F /* KisarazuTrafficSafetyMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KisarazuTrafficSafetyMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D062CC1C86CD5C00B3619F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		12D062CE1C86CD5C00B3619F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		12D062CE1C86CD5C00B3619F /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		12D062D11C86CD5C00B3619F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		12D062D31C86CD5C00B3619F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12D062D61C86CD5C00B3619F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				12D062CC1C86CD5C00B3619F /* AppDelegate.swift */,
-				12D062CE1C86CD5C00B3619F /* ViewController.swift */,
+				12D062CE1C86CD5C00B3619F /* ConfigViewController.swift */,
 				12D062DE1C86D21900B3619F /* TrafficAccidentMapViewController.swift */,
 				12D062D01C86CD5C00B3619F /* Main.storyboard */,
 				12D062D31C86CD5C00B3619F /* Assets.xcassets */,
@@ -215,7 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12D062DF1C86D21900B3619F /* TrafficAccidentMapViewController.swift in Sources */,
-				12D062CF1C86CD5C00B3619F /* ViewController.swift in Sources */,
+				12D062CF1C86CD5C00B3619F /* ConfigViewController.swift in Sources */,
 				12D062CD1C86CD5C00B3619F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,7 +331,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KisarazuTrafficSafetyMap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sample.KisarazuTrafficSafetyMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -344,7 +344,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KisarazuTrafficSafetyMap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sample.KisarazuTrafficSafetyMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
