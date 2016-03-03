@@ -36,6 +36,8 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
         // ToolBarの色を変更 NavigationBarと同じ色にする
         self.navigationController?.toolbar.barTintColor = self.navigationController?.navigationBar.barTintColor
         
+        setCenterButton()
+        
         // 現在地をマーキング
         mapView.userTrackingMode = MKUserTrackingMode.Follow
 
@@ -147,6 +149,60 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
             pin.coordinate = CLLocationCoordinate2DMake(lat, lng)
             // ピンを追加
             mapView.addAnnotation(pin)
+        }
+    }
+    
+    func setCenterButton() {
+        // ボタンに表示するアイコンを生成
+        let targetImage: UIImage! = UIImage(named: "target")
+        // ボタンを生成
+        let centerButton = UIButton(type: .Custom)
+        
+        // ボタンのサイズ
+        centerButton.frame = CGRectMake(0.0, 0.0, 100, 100)
+        // ボタンの中心の表示位置
+        centerButton.center.x = self.view.layer.frame.width / 2
+        centerButton.center.y = self.view.layer.frame.height - 10
+
+        // ボタンの外見
+        // ボーダーラインの色を白
+        centerButton.layer.borderColor = UIColor.whiteColor().CGColor
+        // ボーダーラインの幅
+        centerButton.layer.borderWidth = 1.5
+        // ボタンの色を紫
+        centerButton.layer.backgroundColor = UIColor.purpleColor().CGColor
+        // 角を丸める（丸ボタンになる）
+        centerButton.layer.cornerRadius = 50
+        // ボタンに影をつける
+        centerButton.layer.shadowOffset = CGSizeMake(0, 5.0)
+        centerButton.layer.shadowColor = UIColor.blackColor().CGColor
+        centerButton.layer.shadowOpacity = 0.9
+        centerButton.layer.masksToBounds = false
+        
+        // タップした時のアクションを設定
+        centerButton.addTarget(self, action: "tapAction", forControlEvents: .TouchUpInside)
+        
+        // 文字を表示
+        centerButton.setTitle("現在地", forState: .Normal)
+        centerButton.titleLabel?.font = UIFont.systemFontOfSize(12)
+        centerButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 5, 30)
+        
+        // アイコンを表示
+        centerButton.setImage(targetImage, forState: .Normal)
+        centerButton.imageEdgeInsets = UIEdgeInsetsMake(0, 33, 50, 0)
+        
+        // アイコンの色を白に
+        centerButton.tintColor = UIColor.whiteColor()
+        
+        // ボタンを追加
+        self.navigationController?.view.addSubview(centerButton)
+
+    }
+    
+    func tapAction() {
+        if let last = self.lastLocation {
+            let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(last.latitude, last.longitude)
+            mapView.setCenterCoordinate(center, animated: true)
         }
     }
     
