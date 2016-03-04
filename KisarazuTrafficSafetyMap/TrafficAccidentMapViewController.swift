@@ -15,7 +15,7 @@ import SwiftyJSON
 class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     // サーバーのアドレス
-    let serverAddress = "http://localhost:3000/"
+    let serverAddress = "http://192.168.1.150:3000/"
 
     // MapView
     @IBOutlet weak var mapView: MKMapView!
@@ -28,6 +28,8 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
     
     // 交通事故発生場所の緯度経度を格納する配列
     var trafficAccidentPlaces: [[String: Double]] = []
+    
+    var crackdownPlaces: [[String: Double]] = [["latitude":35.383815, "longitude":139.9514768]]
     
     // ボタンを生成
     let centerButton = UIButton(type: .Custom)
@@ -68,9 +70,12 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
         // 交通事故発生箇所をサーバーから取得
         getTrafficAccidentPlaces({(UIBackgroundFetchResult) -> Void in
             // ピンを立てる
-            self.setPins(self.trafficAccidentPlaces)
+            self.setTrafficAccidentPins(self.trafficAccidentPlaces)
         })
         
+        
+        // 取締りエリア表示
+        setCrackDownPins(crackdownPlaces)
     }
     
     override func didReceiveMemoryWarning() {
@@ -93,9 +98,36 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
             // 現在地から1.5km四方で表示する
             let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(location, 1500, 1500)
             mapView.setRegion(myRegion, animated: true)
+            
+            if crackdownPlaces.count != 0 {
+                checkCrackdownArea()
+            }
+            
         }
     }
     
+    func checkCrackdownArea() {
+        // 現在地
+        let lat1:Double = self.lastLocation!.latitude * M_PI / 180.0
+        let lng1:Double = self.lastLocation!.longitude * M_PI / 180.0
+        // 取締エリア中心
+        let lat2:Double = self.crackdownPlaces[0]["latitude"]! * M_PI / 180.0
+        let lng2:Double = self.crackdownPlaces[0]["longitude"]! * M_PI / 180.0
+        // 赤道半径[km]
+        let r: Double = 6378.137
+        
+        let distance: Double = r * acos( sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * cos(lng2 - lng1))
+        
+        if distance < 1.0 {
+            let noti: UILocalNotification = UILocalNotification()
+            noti.alertBody = "取締り警戒エリア内です"
+            noti.timeZone = NSTimeZone.defaultTimeZone()
+            UIApplication.sharedApplication().scheduleLocalNotification(noti)
+        }
+        
+    }
+    
+    // 画面が回転したときにセンターボタンを再描画
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         self.centerButton.removeFromSuperview()
         setCenterButton(size.width, height: size.height)
@@ -116,6 +148,16 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
             print("NotDetermined")
         }
     }
+
+    // オーバーレイ表示する図形の設定
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        let circleRenderer : MKCircleRenderer = MKCircleRenderer(overlay: overlay);
+        circleRenderer.strokeColor = UIColor.redColor()
+        circleRenderer.fillColor = UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 0.5)
+        circleRenderer.lineWidth = 1.0
+        return circleRenderer
+    }
+
 
     // サーバーから事故箇所を取得
     func getTrafficAccidentPlaces(completionHandler: ((UIBackgroundFetchResult) -> Void)!) {
@@ -146,8 +188,8 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
         }
     }
 
-    // 指定した緯度経度にピンを立てる
-    func setPins(places: [[String: Double]]) {
+    // 交通事故発生箇所にピンを立てる
+    func setTrafficAccidentPins(places: [[String: Double]]) {
         for place in places {
             // 緯度経度を抽出
             let lat: Double = place["latitude"]!
@@ -157,6 +199,24 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
             pin.coordinate = CLLocationCoordinate2DMake(lat, lng)
             // ピンを追加
             mapView.addAnnotation(pin)
+        }
+    }
+    
+    func setCrackDownPins(places: [[String: Double]]) {
+        for place in places {
+            // 緯度経度を設定
+            let lat: Double = place["latitude"]!
+            let lng: Double = place["longitude"]!
+            let center = CLLocationCoordinate2DMake(lat, lng)
+//            // ピンを作る
+//            let pin: MKPointAnnotation = MKPointAnnotation()
+//            pin.coordinate = center
+//            // ピンを追加
+//            mapView.addAnnotation(pin)
+            // 赤い円をオーバーレイ表示する
+            let circle = MKCircle(centerCoordinate: center, radius: 1000)
+            mapView.addOverlay(circle)
+
         }
     }
     
@@ -209,6 +269,7 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
             let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(last.latitude, last.longitude)
             mapView.setCenterCoordinate(center, animated: true)
         }
+        
     }
     
     
