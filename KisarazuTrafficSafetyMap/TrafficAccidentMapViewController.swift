@@ -28,6 +28,9 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
     
     // 交通事故発生場所の緯度経度を格納する配列
     var trafficAccidentPlaces: [[String: Double]] = []
+    
+    // ボタンを生成
+    let centerButton = UIButton(type: .Custom)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +39,7 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
         // ToolBarの色を変更 NavigationBarと同じ色にする
         self.navigationController?.toolbar.barTintColor = self.navigationController?.navigationBar.barTintColor
         
-        setCenterButton()
+        setCenterButton(self.view.frame.width, height: self.view.frame.height)
         
         // 現在地をマーキング
         mapView.userTrackingMode = MKUserTrackingMode.Follow
@@ -91,6 +94,11 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
             let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(location, 1500, 1500)
             mapView.setRegion(myRegion, animated: true)
         }
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        self.centerButton.removeFromSuperview()
+        setCenterButton(size.width, height: size.height)
     }
     
     // 位置情報サービスへの認証状態がダイアログによって変更されたとき実行
@@ -152,17 +160,15 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
         }
     }
     
-    func setCenterButton() {
+    func setCenterButton(width: CGFloat, height: CGFloat) {
         // ボタンに表示するアイコンを生成
         let targetImage: UIImage! = UIImage(named: "target")
-        // ボタンを生成
-        let centerButton = UIButton(type: .Custom)
         
         // ボタンのサイズ
         centerButton.frame = CGRectMake(0.0, 0.0, 100, 100)
         // ボタンの中心の表示位置
-        centerButton.center.x = self.view.layer.frame.width / 2
-        centerButton.center.y = self.view.layer.frame.height - 10
+        centerButton.center.x = width / 2
+        centerButton.center.y = height - 10
 
         // ボタンの外見
         // ボーダーラインの色を白
@@ -196,7 +202,6 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
         
         // ボタンを追加
         self.navigationController?.view.addSubview(centerButton)
-
     }
     
     func tapAction() {
