@@ -16,7 +16,7 @@ import SwiftSpinner
 class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     // サーバーのアドレス
-    let serverAddress = "http://192.168.1.150:3000/"
+    let serverAddress = "http://192.168.0.5:3000/"
 
     // MapView
     @IBOutlet weak var mapView: MKMapView!
@@ -38,6 +38,8 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        SwiftSpinner.show("通信中です")
         
         // ToolBarの色を変更 NavigationBarと同じ色にする
         self.navigationController?.toolbar.barTintColor = self.navigationController?.navigationBar.barTintColor
@@ -181,9 +183,13 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
                     self.trafficAccidentPlaces.append(point)
                 }
                 completionHandler(UIBackgroundFetchResult.NewData)
+                SwiftSpinner.hide()
             }
             // 通信に失敗
             else {
+                SwiftSpinner.show("通信に失敗しました...", animated: false).addTapHandler({
+                    SwiftSpinner.hide()
+                    }, subtitle: "Tap to hide while connecting! This will affect only the current operation.")
                 print(response.result.error)
             }
         }
