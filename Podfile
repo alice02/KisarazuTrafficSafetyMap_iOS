@@ -6,5 +6,6 @@ use_frameworks!
 target 'KisarazuTrafficSafetyMap' do
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
+	pod 'SwiftSpinner'
 end
 

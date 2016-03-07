@@ -11,6 +11,7 @@ import CoreLocation
 import MapKit
 import Alamofire
 import SwiftyJSON
+import SwiftSpinner
 
 class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
