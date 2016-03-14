@@ -7,5 +7,6 @@ target 'KisarazuTrafficSafetyMap' do
 	pod 'Alamofire'
 	pod 'SwiftyJSON'
 	pod 'SwiftSpinner'
+	pod 'ToastSwift'
 end
 

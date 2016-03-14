@@ -16,7 +16,7 @@ import SwiftSpinner
 class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     // サーバーのアドレス
-    let serverAddress = "http://192.168.0.5:3000/"
+    let serverAddress = "http://localhost:3000/"
 
     // MapView
     @IBOutlet weak var mapView: MKMapView!
@@ -30,17 +30,17 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
     // 交通事故発生場所の緯度経度を格納する配列
     var trafficAccidentPlaces: [[String: Double]] = []
     
-    var crackdownPlaces: [[String: Double]] = [["latitude":35.383815, "longitude":139.9514768]]
+    var crackdownPlaces: [[String: Double]] = [["latitude":35.372201, "longitude":139.932771]]
     
     // ボタンを生成
     let centerButton = UIButton(type: .Custom)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         SwiftSpinner.show("通信中です")
-        
+
         // ToolBarの色を変更 NavigationBarと同じ色にする
         self.navigationController?.toolbar.barTintColor = self.navigationController?.navigationBar.barTintColor
         
@@ -75,7 +75,6 @@ class TrafficAccidentMapViewController: UIViewController, CLLocationManagerDeleg
             // ピンを立てる
             self.setTrafficAccidentPins(self.trafficAccidentPlaces)
         })
-        
         
         // 取締りエリア表示
         setCrackDownPins(crackdownPlaces)

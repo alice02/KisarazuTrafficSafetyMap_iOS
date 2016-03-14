@@ -29,17 +29,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         // アプリ起動中(フォアグラウンド)に通知が届いた場合
         if (application.applicationState == UIApplicationState.Active) {
-            let dialog: UIAlertController = UIAlertController(title: "取締りエリア内に入りました", message: "", preferredStyle: .Alert)
-            let soundIdRing:SystemSoundID = 1002  // new-mail.caf
-            AudioServicesPlaySystemSound(soundIdRing)
+//            let dialog: UIAlertController = UIAlertController(title: "取締りエリア内に入りました", message: "", preferredStyle: .Alert)
+//            let soundIdRing:SystemSoundID = 1002  // new-mail.caf
+//            AudioServicesPlaySystemSound(soundIdRing)
+            self.window?.rootViewController?.view.makeToast(message: "取締エリア内に入りました！")
 
-            self.window!.rootViewController?.presentViewController(dialog, animated: true) { () -> Void in
-                let delay = 2.0 * Double(NSEC_PER_SEC)
-                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                dispatch_after(time, dispatch_get_main_queue(), {
-                    self.window?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
-                })
-            }
+//            self.window!.rootViewController?.presentViewController(dialog, animated: true) { () -> Void in
+//                let delay = 2.0 * Double(NSEC_PER_SEC)
+//                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+//                dispatch_after(time, dispatch_get_main_queue(), {
+//                    self.window?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+//                })
+//            }
             print("アプリ起動中(フォアグラウンド)に通知が届いた場合")
             
             // アプリがバックグラウンドから復帰した場合
